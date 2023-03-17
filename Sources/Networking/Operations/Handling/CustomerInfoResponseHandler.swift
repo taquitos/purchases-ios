@@ -28,6 +28,8 @@ class CustomerInfoResponseHandler {
                     _ = response.body.errorResponse.asBackendError(with: response.statusCode)
                 }
 
+                Logger.warn("Received customer info: \(response.body.customerInfo.rawData)")
+
                 return response.body.customerInfo.copy(with: response.verificationResult)
             }
             .mapError(BackendError.networkError)

@@ -146,9 +146,10 @@ private extension OfferingsManager {
             if !missingProductIDs.isEmpty {
                 switch fetchPolicy {
                 case .ignoreNotFoundProducts:
-                    Logger.appleWarning(
-                        Strings.offering.cannot_find_product_configuration_error(identifiers: missingProductIDs)
-                    )
+                    break
+//                    Logger.appleWarning(
+//                        Strings.offering.cannot_find_product_configuration_error(identifiers: missingProductIDs)
+//                    )
 
                 case .failIfProductsAreMissing:
                     self.handleOfferingsUpdateError(
@@ -172,8 +173,8 @@ private extension OfferingsManager {
         _ error: Error,
         completion: (@MainActor @Sendable (Result<Offerings, Error>) -> Void)?
     ) {
-        Logger.appleError(Strings.offering.fetching_offerings_error(error: error,
-                                                                    underlyingError: error.underlyingError))
+//        Logger.appleError(Strings.offering.fetching_offerings_error(error: error,
+//                                                                    underlyingError: error.underlyingError))
         self.deviceCache.clearOfferingsCacheTimestamp()
         self.dispatchCompletionOnMainThreadIfPossible(completion, result: .failure(error))
     }

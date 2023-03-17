@@ -59,10 +59,8 @@ extension Configuration.EntitlementVerificationMode {
 
     static let all: [Self] = [
         .disabled,
-        .informational
-        // .enforced is unavailable while the feature is in beta
-        // It will be enabled again in a future release.
-        // .enforced
+        .informational,
+        .enforced
     ]
 
 }

@@ -41,7 +41,7 @@ class OfferingsFactory {
         }
 
         guard !availablePackages.isEmpty else {
-            Logger.warn(Strings.offering.offering_empty(offeringIdentifier: offering.identifier))
+//            Logger.warn(Strings.offering.offering_empty(offeringIdentifier: offering.identifier))
             return nil
         }
 

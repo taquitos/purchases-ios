@@ -102,7 +102,7 @@ extension NetworkStrings: CustomStringConvertible {
 private extension HTTPRequest {
 
     var description: String {
-        return "\(self.method.httpMethod) \(self.path.url?.path ?? "")"
+        return "\(self.method.httpMethod) \(self.path.url?.absoluteString ?? "")"
     }
 
 }

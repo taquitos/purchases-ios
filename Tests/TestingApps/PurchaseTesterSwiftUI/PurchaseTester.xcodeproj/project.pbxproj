@@ -703,6 +703,7 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8SXR2327BM;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 8SXR2327BM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "PurchaseTester-Info.plist";
@@ -721,7 +722,7 @@
 				PRODUCT_NAME = PurchaseTester;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.revenuecat.sampleapp";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "match Development com.revenuecat.sampleapp macos";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "match Development com.revenuecat.sampleapp catalyst";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=watchos*]" = "match Development com.revenuecat.sampleapp";
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx watchos watchsimulator";
 				SUPPORTS_MACCATALYST = YES;
@@ -947,8 +948,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RevenueCat/purchases-ios";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.17.0;
+				branch = "nacho/enforcement-demo";
+				kind = branch;
 			};
 		};
 		577E0E3B29159A8B0071E063 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
