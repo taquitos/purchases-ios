@@ -13,7 +13,6 @@
 
 import Foundation
 
-@available(iOS 15.0, tvOS 15.0, watchOS 8.0, macOS 12.0, *)
 extension CustomerInfo {
 
     convenience init(
@@ -48,7 +47,17 @@ extension CustomerInfo {
         )
     }
 
-    private static func createEntitlements(
+}
+
+extension CustomerInfo {
+
+    static let defaultManagementURL = URL(string: "https://apps.apple.com/account/subscriptions")!
+
+}
+
+private extension CustomerInfo {
+
+    static func createEntitlements(
         with products: [PurchasedSK2Product],
         mapping: ProductEntitlementMapping
     ) -> [String: CustomerInfoResponse.Entitlement] {
@@ -84,8 +93,6 @@ extension CustomerInfo {
     }
 
     /// Purchases are verified with StoreKit 2.
-    private static let verification: VerificationResult = .verified
-
-    static let defaultManagementURL = URL(string: "https://apps.apple.com/account/subscriptions")!
+    static let verification: VerificationResult = .verified
 
 }

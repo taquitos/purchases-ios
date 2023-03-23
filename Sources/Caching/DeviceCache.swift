@@ -380,6 +380,16 @@ class DeviceCache {
 // - It contains `NotificationCenter`, which isn't thread-safe as of Swift 5.7.
 extension DeviceCache: @unchecked Sendable {}
 
+// MARK: -
+
+extension DeviceCache: ProductEntitlementMappingFetcher {
+
+    var productEntitlementMapping: ProductEntitlementMapping? {
+        return self.cachedProductEntitlementMapping
+    }
+
+}
+
 // MARK: - Private
 
 // All methods that modify or read from the UserDefaults data source but require external mechanisms for ensuring

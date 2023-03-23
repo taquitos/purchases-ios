@@ -49,12 +49,16 @@ class BasePurchasesTests: TestCase {
         self.receiptFetcher = MockReceiptFetcher(requestFetcher: self.requestFetcher, systemInfo: systemInfoAttribution)
         self.attributionFetcher = MockAttributionFetcher(attributionFactory: MockAttributionTypeFactory(),
                                                          systemInfo: systemInfoAttribution)
+        self.mockProductEntitlementMappingFetcher = MockProductEntitlementMappingFetcher()
+        self.mockPurchasedProductsFetcher = MockPurchasedProductsFetcher()
 
         let apiKey = "mockAPIKey"
         let httpClient = MockHTTPClient(apiKey: apiKey, systemInfo: self.systemInfo, eTagManager: MockETagManager())
         let config = BackendConfiguration(httpClient: httpClient,
                                           operationDispatcher: self.mockOperationDispatcher,
                                           operationQueue: MockBackend.QueueProvider.createBackendQueue(),
+                                          productEntitlementMappingFetcher: self.mockProductEntitlementMappingFetcher,
+                                          purchasedProductsFetcher: self.mockPurchasedProductsFetcher,
                                           dateProvider: MockDateProvider(stubbedNow: MockBackend.referenceDate))
         self.backend = MockBackend(backendConfig: config, attributionFetcher: self.attributionFetcher)
         self.subscriberAttributesManager = MockSubscriberAttributesManager(
@@ -142,6 +146,7 @@ class BasePurchasesTests: TestCase {
             self.identityManager = nil
             self.mockOfferingsManager = nil
             self.mockOfflineEntitlementsManager = nil
+            self.mockPurchasedProductsFetcher = nil
             self.mockManageSubsHelper = nil
             self.mockBeginRefundRequestHelper = nil
             self.purchasesOrchestrator = nil
@@ -179,6 +184,8 @@ class BasePurchasesTests: TestCase {
     var customerInfoManager: CustomerInfoManager!
     var mockOfferingsManager: MockOfferingsManager!
     var mockOfflineEntitlementsManager: MockOfflineEntitlementsManager!
+    var mockProductEntitlementMappingFetcher: MockProductEntitlementMappingFetcher!
+    var mockPurchasedProductsFetcher: MockPurchasedProductsFetcher!
     var purchasesOrchestrator: PurchasesOrchestrator!
     var trialOrIntroPriceEligibilityChecker: MockTrialOrIntroPriceEligibilityChecker!
     var cachingTrialOrIntroPriceEligibilityChecker: MockCachingTrialOrIntroPriceEligibilityChecker!

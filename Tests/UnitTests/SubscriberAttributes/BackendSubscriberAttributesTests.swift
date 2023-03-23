@@ -55,10 +55,12 @@ class BackendSubscriberAttributesTests: TestCase {
         let attributionFetcher = AttributionFetcher(attributionFactory: MockAttributionTypeFactory(),
                                                     systemInfo: self.systemInfo)
 
-        let config = BackendConfiguration(httpClient: mockHTTPClient,
+        let config = BackendConfiguration(httpClient: self.mockHTTPClient,
                                           operationDispatcher: MockOperationDispatcher(),
                                           operationQueue: MockBackend.QueueProvider.createBackendQueue(),
-                                          dateProvider: dateProvider)
+                                          productEntitlementMappingFetcher: MockProductEntitlementMappingFetcher(),
+                                          purchasedProductsFetcher: MockPurchasedProductsFetcher(),
+                                          dateProvider: self.dateProvider)
 
         self.backend = Backend(backendConfig: config, attributionFetcher: attributionFetcher)
 

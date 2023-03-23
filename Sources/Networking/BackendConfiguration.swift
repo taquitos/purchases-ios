@@ -20,14 +20,20 @@ final class BackendConfiguration {
     let operationDispatcher: OperationDispatcher
     let operationQueue: OperationQueue
     let dateProvider: DateProvider
+    let productEntitlementMappingFetcher: ProductEntitlementMappingFetcher
+    let purchasedProductsFetcher: PurchasedProductsFetcherType
 
     init(httpClient: HTTPClient,
          operationDispatcher: OperationDispatcher,
          operationQueue: OperationQueue,
+         productEntitlementMappingFetcher: ProductEntitlementMappingFetcher,
+         purchasedProductsFetcher: PurchasedProductsFetcherType,
          dateProvider: DateProvider = DateProvider()) {
         self.httpClient = httpClient
         self.operationDispatcher = operationDispatcher
         self.operationQueue = operationQueue
+        self.productEntitlementMappingFetcher = productEntitlementMappingFetcher
+        self.purchasedProductsFetcher = purchasedProductsFetcher
         self.dateProvider = dateProvider
     }
 

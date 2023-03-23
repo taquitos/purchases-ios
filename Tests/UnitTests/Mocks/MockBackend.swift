@@ -34,10 +34,14 @@ class MockBackend: Backend {
                                         systemInfo: systemInfo,
                                         eTagManager: MockETagManager(),
                                         requestTimeout: 7)
-        let backendConfig = BackendConfiguration(httpClient: httpClient,
-                                                 operationDispatcher: MockOperationDispatcher(),
-                                                 operationQueue: QueueProvider.createBackendQueue(),
-                                                 dateProvider: MockDateProvider(stubbedNow: MockBackend.referenceDate))
+        let backendConfig = BackendConfiguration(
+            httpClient: httpClient,
+            operationDispatcher: MockOperationDispatcher(),
+            operationQueue: QueueProvider.createBackendQueue(),
+            productEntitlementMappingFetcher: MockProductEntitlementMappingFetcher(),
+            purchasedProductsFetcher: MockPurchasedProductsFetcher(),
+            dateProvider: MockDateProvider(stubbedNow: MockBackend.referenceDate)
+        )
         let identity = MockIdentityAPI(backendConfig: backendConfig)
         let offerings = MockOfferingsAPI(backendConfig: backendConfig)
         let offlineEntitlements = MockOfflineEntitlementsAPI(backendConfig: backendConfig)
