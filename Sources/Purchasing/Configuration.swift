@@ -180,9 +180,8 @@ import Foundation
         /// ### Related Symbols
         /// - ``Configuration/EntitlementVerificationMode``
         /// - ``VerificationResult``
-        // Trusted Entitlements: internal until ready to be made public.
         @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.2, *)
-        @objc internal func with(entitlementVerificationMode mode: EntitlementVerificationMode) -> Builder {
+        @objc public func with(entitlementVerificationMode mode: EntitlementVerificationMode) -> Builder {
             self.responseVerificationMode = Signing.verificationMode(with: mode)
             return self
         }
@@ -212,8 +211,7 @@ import Foundation
 
 // MARK: - Public Keys
 
-// Trusted Entitlements: internal until ready to be made public.
-internal extension Configuration {
+public extension Configuration {
 
     /// Defines how strict ``EntitlementInfo`` verification ought to be.
     ///

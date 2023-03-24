@@ -19,10 +19,9 @@
     NSDictionary<NSString *, RCEntitlementInfo *> *activeInAnyEnvironment = ei.activeInAnyEnvironment;
     NSDictionary<NSString *, RCEntitlementInfo *> *activeInCurrentEnvironment = ei.activeInCurrentEnvironment;
     RCEntitlementInfo *e = [ei objectForKeyedSubscript:@""];
-    // Trusted Entitlements: internal until ready to be made public.
-     // __unused RCVerificationResult verification = ei.verification;
+    RCVerificationResult verification = ei.verification;
 
-    NSLog(ei, all, active, activeInAnyEnvironment, activeInCurrentEnvironment, e);
+    NSLog(ei, all, active, activeInAnyEnvironment, activeInCurrentEnvironment, e, verification);
 }
 
 @end
