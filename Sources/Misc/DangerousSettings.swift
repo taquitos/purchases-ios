@@ -14,15 +14,15 @@ import Foundation
 @objc(RCDangerousSettings) public final class DangerousSettings: NSObject {
 
     /// Dangerous settings not exposed outside of the SDK.
-    internal struct InternalSettings {
+    public struct InternalSettings {
 
         /// Whether `ReceiptFetcher` can retry fetching receipts.
-        let enableReceiptFetchRetry: Bool
+        public let enableReceiptFetchRetry: Bool
 
         /// Whether `HTTPClient` will fake server errors
-        let forceServerErrors: Bool
+        public let forceServerErrors: Bool
 
-        init(enableReceiptFetchRetry: Bool = false, forceServerErrors: Bool = false) {
+        public init(enableReceiptFetchRetry: Bool = false, forceServerErrors: Bool = false) {
             self.enableReceiptFetchRetry = enableReceiptFetchRetry
             self.forceServerErrors = forceServerErrors
         }
@@ -40,7 +40,7 @@ import Foundation
      */
     @objc public let autoSyncPurchases: Bool
 
-    internal let internalSettings: InternalSettings
+    public let internalSettings: InternalSettings
 
     @objc public override convenience init() {
         self.init(autoSyncPurchases: true)
@@ -58,11 +58,12 @@ import Foundation
     }
 
     /// Designated initializer
-    internal init(autoSyncPurchases: Bool, internalSettings: InternalSettings) {
+    public init(autoSyncPurchases: Bool, internalSettings: InternalSettings) {
         self.autoSyncPurchases = autoSyncPurchases
         self.internalSettings = internalSettings
     }
 
 }
 
+extension DangerousSettings.InternalSettings: Sendable {}
 extension DangerousSettings: Sendable {}

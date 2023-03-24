@@ -947,8 +947,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RevenueCat/purchases-ios";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.17.0;
+				branch = "nacho/testing-offline-entitlements";
+				kind = branch;
 			};
 		};
 		577E0E3B29159A8B0071E063 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
