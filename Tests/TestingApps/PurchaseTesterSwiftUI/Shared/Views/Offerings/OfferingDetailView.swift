@@ -114,6 +114,21 @@ struct OfferingDetailView: View {
             self.isPurchasing = true
             defer { self.isPurchasing = false }
 
+            Purchases.shared.purchase(package: self.package) { transaction, info, error, cancelled in
+                print(info)
+                print(error)
+
+                self.isPurchasing = false
+                
+                if let info = info {
+                    self.completedPurchase((
+                        transaction,
+                        info,
+                        cancelled
+                    ))
+                }
+            }
+
             let result = try await Purchases.shared.purchase(package: self.package)
             self.completedPurchase(result)
         }

@@ -33,7 +33,6 @@
 		578DAA0C2947DD21001700FD /* PurchaseTesterWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578DAA0B2947DD21001700FD /* PurchaseTesterWatchApp.swift */; };
 		578DAA0E2947DD21001700FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578DAA0D2947DD21001700FD /* ContentView.swift */; };
 		578DAA102947DD21001700FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 578DAA0F2947DD21001700FD /* Assets.xcassets */; };
-		578DAA162947DD21001700FD /* PurchaseTesterWatchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 578DAA092947DD21001700FD /* PurchaseTesterWatchOS.app */; platformFilters = (watchos, ); settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		578DAA232947DD8C001700FD /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = 578DAA222947DD8C001700FD /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		578DAA262947DD8C001700FD /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 578DAA202947DD8C001700FD /* Core.framework */; platformFilters = (ios, maccatalyst, macos, ); };
 		578DAA272947DD8C001700FD /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 578DAA202947DD8C001700FD /* Core.framework */; platformFilters = (ios, maccatalyst, macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -53,13 +52,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		578DAA142947DD21001700FD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2CD2C4E9278C9B01005D1CC2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 578DAA082947DD21001700FD;
-			remoteInfo = "PurchaseTesterWatchOS Watch App";
-		};
 		578DAA242947DD8C001700FD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2CD2C4E9278C9B01005D1CC2 /* Project object */;
@@ -86,17 +78,6 @@
 				578DAA272947DD8C001700FD /* Core.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		578DAA172947DD21001700FD /* Embed Watch Content */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
-			dstSubfolderSpec = 16;
-			files = (
-				578DAA162947DD21001700FD /* PurchaseTesterWatchOS.app in Embed Watch Content */,
-			);
-			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		578DAA362947E256001700FD /* Embed Frameworks */ = {
@@ -335,13 +316,11 @@
 				2CD2C4F2278C9B02005D1CC2 /* Frameworks */,
 				2CD2C4F3278C9B02005D1CC2 /* Resources */,
 				2CF4286628637559007E6A78 /* Embed Frameworks */,
-				578DAA172947DD21001700FD /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				577E0E3F29159B340071E063 /* PBXTargetDependency */,
-				578DAA152947DD21001700FD /* PBXTargetDependency */,
 				578DAA252947DD8C001700FD /* PBXTargetDependency */,
 			);
 			name = PurchaseTester;
@@ -525,14 +504,6 @@
 		577E0E3F29159B340071E063 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 577E0E3E29159B340071E063 /* RevenueCat */;
-		};
-		578DAA152947DD21001700FD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			platformFilters = (
-				watchos,
-			);
-			target = 578DAA082947DD21001700FD /* PurchaseTesterWatchOS */;
-			targetProxy = 578DAA142947DD21001700FD /* PBXContainerItemProxy */;
 		};
 		578DAA252947DD8C001700FD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
