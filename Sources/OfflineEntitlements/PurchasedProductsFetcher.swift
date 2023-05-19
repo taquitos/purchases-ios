@@ -19,6 +19,8 @@ protocol PurchasedProductsFetcherType {
     @available(iOS 15.0, tvOS 15.0, watchOS 8.0, macOS 12.0, *)
     func fetchPurchasedProducts() async throws -> [PurchasedSK2Product]
 
+    func clearCache()
+
 }
 
 /// A type that can fetch purchased products from StoreKit 2.
@@ -30,7 +32,6 @@ class PurchasedProductsFetcher: PurchasedProductsFetcherType {
     private let appStoreSync: () async throws -> Void
     private let sandboxDetector: SandboxEnvironmentDetector
     private let cache: InMemoryCachedObject<Transactions>
-    private let updatesObservation: Task<Void, Never>
 
     init(
         appStoreSync: @escaping () async throws -> Void = PurchasedProductsFetcher.defaultAppStoreSync,
@@ -39,17 +40,6 @@ class PurchasedProductsFetcher: PurchasedProductsFetcherType {
         self.appStoreSync = appStoreSync
         self.sandboxDetector = sandboxDetector
         self.cache = .init()
-
-        self.updatesObservation = Task<Void, Never>(priority: .utility) { [cache = self.cache] in
-            for await _ in StoreKit.Transaction.updates where cache.cachedInstance != nil {
-                Logger.debug(Strings.offlineEntitlements.purchased_products_invalidating_cache)
-                cache.clearCache()
-            }
-        }
-    }
-
-    deinit {
-        self.updatesObservation.cancel()
     }
 
     func fetchPurchasedProducts() async throws -> [PurchasedSK2Product] {
@@ -83,6 +73,12 @@ class PurchasedProductsFetcher: PurchasedProductsFetcherType {
             // If there are any entitlements, ignore the error.
             return result
         }
+    }
+
+    func clearCache() {
+        Logger.debug(Strings.offlineEntitlements.purchased_products_invalidating_cache)
+
+        self.cache.clearCache()
     }
 
     static let defaultAppStoreSync = AppStore.sync
