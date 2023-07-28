@@ -56,6 +56,7 @@ struct SamplePaywallsList: View {
                         Text(template.name)
                     }
                     .buttonStyle(.plain)
+                    .contentShape(Rectangle())
                 }
             }
         }
