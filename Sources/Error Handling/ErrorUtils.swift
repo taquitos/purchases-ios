@@ -380,13 +380,29 @@ enum ErrorUtils {
     /**
      * Constructs an Error with the ``ErrorCode/purchaseCancelledError`` code.
      *
-     * - Note: This error is used when  a purchase is cancelled by the user.
+     * - Note: This error is used when a purchase is cancelled by the user.
      */
     static func purchaseCancelledError(
         error: Error? = nil,
         fileName: String = #fileID, functionName: String = #function, line: UInt = #line
     ) -> PurchasesError {
         let errorCode = ErrorCode.purchaseCancelledError
+        return ErrorUtils.error(with: errorCode,
+                                message: errorCode.description,
+                                underlyingError: error,
+                                fileName: fileName, functionName: functionName, line: line)
+    }
+
+    /**
+     * Constructs an Error with the ``ErrorCode/appStoreAuthenticationFailedError`` code.
+     *
+     * - Note: This error is used when a user attempted to login to the App Store but it failed.
+     */
+    static func authenticationFailedError(
+        error: Error? = nil,
+        fileName: String = #fileID, functionName: String = #function, line: UInt = #line
+    ) -> PurchasesError {
+        let errorCode = ErrorCode.appStoreAuthenticationFailedError
         return ErrorUtils.error(with: errorCode,
                                 message: errorCode.description,
                                 underlyingError: error,
@@ -675,7 +691,8 @@ private extension ErrorUtils {
                 .invalidPromotionalOfferError,
                 .offlineConnectionError,
                 .featureNotAvailableInCustomEntitlementsComputationMode,
-                .signatureVerificationFailed:
+                .signatureVerificationFailed,
+                .appStoreAuthenticationFailedError:
                 Logger.error(
                     localizedDescription,
                     fileName: fileName,

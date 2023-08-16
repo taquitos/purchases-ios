@@ -60,6 +60,7 @@ import Foundation
     @objc(RCFeatureNotAvailableInCustomEntitlementsComputationMode)
     case featureNotAvailableInCustomEntitlementsComputationMode = 36
     @objc(RCSignatureVerificationFailed) case signatureVerificationFailed = 37
+    @objc(RCAppStoreAuthenticationFailedError) case appStoreAuthenticationFailedError = 38
 
     // swiftlint:enable missing_docs
 
@@ -181,6 +182,8 @@ extension ErrorCode: DescribableError {
             return "This feature is not available when utilizing the customEntitlementsComputation dangerousSetting."
         case .signatureVerificationFailed:
             return "Request failed signature verification. See https://rev.cat/trusted-entitlements for more info."
+        case .appStoreAuthenticationFailedError:
+            return "App Store authentication failed. Check your username and password."
 
         @unknown default:
             return "Something went wrong."
@@ -282,6 +285,8 @@ extension ErrorCode {
             return "FEATURE_NOT_AVAILABLE_IN_CUSTOM_ENTITLEMENTS_COMPUTATION_MODE_ERROR"
         case .signatureVerificationFailed:
             return "SIGNATURE_VERIFICATION_FAILED"
+        case .appStoreAuthenticationFailedError:
+            return "APP_STORE_AUTHENTICATION_FAILED_ERROR"
         @unknown default:
             return "UNRECOGNIZED_ERROR"
         }

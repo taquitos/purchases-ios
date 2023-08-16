@@ -74,7 +74,8 @@ extension SKError: PurchasesErrorConvertible {
                             // Cancellations sometimes show up as undocumented errors instead of regular cancellations
                         case .paymentSheetFailed:
                             return ErrorUtils.purchaseCancelledError(error: self)
-
+                        case .authenticationFailed:
+                            return ErrorUtils.authenticationFailedError(error: self)
                         default: break
                         }
 
@@ -123,6 +124,7 @@ private enum AMSError {
 
         // See https://github.com/RevenueCat/purchases-ios/issues/1445
         case paymentSheetFailed = 6
+        case authenticationFailed = 100
 
     }
 
