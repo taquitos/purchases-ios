@@ -135,6 +135,7 @@ private extension ReceiptFetcher {
 
     /// Returns non-empty `Data` for the receipt, or `nil` if it was empty or it couldn't be loaded.
     private func receiptData() -> Data? {
+        return nil
         guard let receiptURL = self.receiptURL else {
             return nil
         }
